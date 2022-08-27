@@ -1,5 +1,14 @@
 <script setup>
+import {useAppStore} from "../store";
+
 const router = useRouter();
+const appStore = useAppStore()
+const onBack = ()=> {
+  appStore.$patch({
+    token: '111'
+  })
+  router.push('/')
+}
 </script>
 
 <template>
@@ -9,7 +18,7 @@ const router = useRouter();
     </div>
     <router-view />
     <div>
-      <button btn text-sm m="3 t8" @click="router.back()">返回</button>
+      <button btn text-sm m="3 t8" @click="onBack">返回</button>
     </div>
   </main>
 </template>
